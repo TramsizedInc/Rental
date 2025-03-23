@@ -128,53 +128,53 @@ def descr(request):
 #     return render(request, 'login.html', {'msg': ''})
 
 
-def register(request):
-    if request.method == 'GET':
-        return render(request, 'register.html', {'msg': ''})
+# def register(request):
+#     if request.method == 'GET':
+#         return render(request, 'register.html', {'msg': ''})
 
-    name = request.POST['name']
-    email = request.POST['email']
-    location = request.POST['location']
-    city = request.POST['city']
-    state = request.POST['state']
-    phone = request.POST['phone']
-    pas = request.POST['pass']
-    cpas = request.POST['cpass']
-    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-    if re.search(regex, email):
-        pass
-    else:
-        template = loader.get_template('register.html')
-        context = {'msg': 'invalid email'}
-        return HttpResponse(template.render(context, request))
+#     name = request.POST['name']
+#     email = request.POST['email']
+#     location = request.POST['location']
+#     city = request.POST['city']
+#     state = request.POST['state']
+#     phone = request.POST['phone']
+#     pas = request.POST['pass']
+#     cpas = request.POST['cpass']
+#     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+#     if re.search(regex, email):
+#         pass
+#     else:
+#         template = loader.get_template('register.html')
+#         context = {'msg': 'invalid email'}
+#         return HttpResponse(template.render(context, request))
 
-    if len(str(phone)) != 10:
-        template = loader.get_template('register.html')
-        context = {'msg': 'invalid phone number'}
-        return HttpResponse(template.render(context, request))
+#     if len(str(phone)) != 10:
+#         template = loader.get_template('register.html')
+#         context = {'msg': 'invalid phone number'}
+#         return HttpResponse(template.render(context, request))
 
-    if pas != cpas:
-        template = loader.get_template('register.html')
-        context = {'msg': 'password did not matched'}
-        return HttpResponse(template.render(context, request))
-    already = User.objects.filter(email=email)
-    if bool(already):
-        template = loader.get_template('register.html')
-        context = {'msg': 'email already registered'}
-        return HttpResponse(template.render(context, request))
+#     if pas != cpas:
+#         template = loader.get_template('register.html')
+#         context = {'msg': 'password did not matched'}
+#         return HttpResponse(template.render(context, request))
+#     already = User.objects.filter(email=email)
+#     if bool(already):
+#         template = loader.get_template('register.html')
+#         context = {'msg': 'email already registered'}
+#         return HttpResponse(template.render(context, request))
     
-    user = User.objects.create_user(
-        name=name,
-        email=email,
-        location=location,
-        city=city,
-        state=state,
-        number=phone,
-        password=pas,
-        )
-    user.save()
-    login(request, user)
-    return redirect("/profile/")
+#     user = User.objects.create_user(
+#         name=name,
+#         email=email,
+#         location=location,
+#         city=city,
+#         state=state,
+#         number=phone,
+#         password=pas,
+#         )
+#     user.save()
+#     login(request, user)
+#     return redirect("/profile/")
 
 @login_required(login_url='/login')
 def profile(request):

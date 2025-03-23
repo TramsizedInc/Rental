@@ -293,75 +293,64 @@
 
 
                 {% if room %}
-                <h5 class="my-4" style="text-align: center;"> Apartment - Posted for You.</h5>
+                <h5 class="my-4" style="text-align: center;"> Feltöltött lakások</h5>
                 <div class="w3-row-padding">
-                    <div class="col carousel slide my-3" data-ride="carousel">
-                        <div class="carousel-inner no-padding">
-                            <div class="carousel-item active">
+                    <div class="col my-3">
                                 {% for i in room.0%}
                                 <div class="w3-third w3-container w3-margin-bottom ">
-                                    <div class="card" style=" background-color: #e9ecef;">
+                                    <div class="card" style=" background-color: rgb(50, 109, 168);">
                                         <img src='{{i.img.url}}' class="w3-hover-opacity" style="height: 250px; width: 100%" alt="...">
                                         <div class="card-body">
-                                            <p>{{i.room_id}}</p>
-                                            <p>{{i.cost}}</p>
+                                            <p>Lakás azonosítója: {{i.room_id}}</p>
+                                            <p>{{i.cost}} Ft</p>
                                             <p>{{i.location}}</p>
                                             <form action="/deleter">
-                                                <button name="id" value="{{i.room_id}}"  type="submit" class="btn btn-sm w3-dark-grey">Delete</button>
+                                                <button name="id" value="{{i.room_id}}"  type="submit" class="btn btn-sm w3-dark-grey">Törlés</button>
                                             </form>
                                             <form action="/descr"  style="margin-bottom: 5px;">
-                                                <button name="id" value="{{i.room_id}}" class="btn btn-sm w3-blue"> Quick view</button>
+                                                <button name="id" value="{{i.room_id}}" class="btn btn-sm w3-blue"> Részletes nézet</button>
                                             </form> 
                                         </div>
                                     </div>
                                 </div>
                                 {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and forloop.counter < room.2 %}
                             </div>
-                            <div class="carousel-item">
                                 {% endif %}
                                 {% endfor %}
-                            </div>
-                        </div>
                     </div>
                     </a>
                 </div>
                 {% endif %}
 
                  <div class="profile-userbuttons">
-                    <a href="/post/"><button type="submit" class="btn btn-success btn-sm">Post ad for Apartment</button>
+                    <a href="/post/"><button type="submit" class="btn btn-success btn-sm">Lakás hírdetése</button>
                     </a>
                 </div>
 
                 {% if house %}
-                <h5 class="my-4" style="text-align: center;"> Houses - Posted for You.</h5>
+                <h5 class="my-4" style="text-align: center;"> Feltöltött házak</h5>
                 <div class="w3-row-padding">
-                    <div class="col carousel slide my-3" data-ride="carousel">
-                        <div class="carousel-inner no-padding">
-                            <div class="carousel-item active">
+                    <div class="col my-3">
                                 {% for i in house.0%}
                                 <div class="w3-third w3-container w3-margin-bottom">
-                                    <div class="card" style=" background-color: #e9ecef;">
+                                    <div class="card" style=" background-color: rgb(50, 109, 168);">
                                         <img src='{{i.img.url}}' class="w3-hover-opacity" style="height: 250px; width: 100%" alt="...">
                                         <div class="card-body">
-                                            <p>{{i.house_id}}</p>
-                                            <p>{{i.cost}}</p>
+                                            <p>Ház azonosítója: {{i.house_id}}</p>
+                                            <p>{{i.cost}}Ft</p>
                                             <p>{{i.location}}</p>
                                             <form action="/deleteh" >
-                                                <button name="id" value="{{i.house_id}}"  type="submit" class="btn btn-sm w3-dark-grey">Delete</button>
+                                                <button name="id" value="{{i.house_id}}"  type="submit" class="btn btn-sm w3-dark-grey">Törlés</button>
                                             </form>
                                             <form action="/descr"  style="margin-bottom: 5px;">
-                                                <button name="id" value="{{i.house_id}}" class="btn  btn-sm w3-blue"> Quick view</button>
+                                                <button name="id" value="{{i.house_id}}" class="btn  btn-sm w3-blue"> Részletes nézet</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                                 {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and forloop.counter < house.2 %}
-                            </div>
-                            <div class="carousel-item">
                                 {% endif %}
                                 {% endfor %}
-                            </div>
-                        </div>
                     </div>
                 </div>
                 {% endif %}
@@ -369,7 +358,7 @@
 
 
                 <div class="profile-userbuttons">
-                    <a href="/posth/"><button type="submit" class="btn btn-success btn-sm">Post ad for House</button></a>
+                    <a href="/posth/"><button type="submit" class="btn btn-success btn-sm">Ház hírdetése</button></a>
                 </div>
                 <!-- {% if room%}
                 <br>

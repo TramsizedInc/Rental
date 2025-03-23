@@ -36,7 +36,7 @@ urlpatterns = [
     re_path(r'^about/',views.about),
 	re_path(r'^admin/',admin.site.urls),
     re_path(r'^user/',include('user.urls')),
-    re_path(r'^register', views.register),
+    # re_path(r'^register', views.register),
     re_path(r'^login', views.login_view),
     re_path(r'^profile/',views.profile),
     re_path(r'^post/$', views.post),
