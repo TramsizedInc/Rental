@@ -302,7 +302,7 @@ def deleter(request):
         id = request.GET['id']
         instance = Room.objects.get(room_id=id)
         instance.delete()
-        messages.success(request, 'Appartment details deleted successfully..')
+        messages.success(request, 'Részletek sikeresen törölve..')
     return redirect('/profile')
 
 
@@ -311,7 +311,7 @@ def deleteh(request):
         id = request.GET['id']
         instance = House.objects.get(house_id=id)
         instance.delete()
-        messages.success(request, 'House details deleted successfully..')
+        messages.success(request, 'Részletek sikeresen törölve..')
     return redirect('/profile')
 
 

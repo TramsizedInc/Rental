@@ -160,3 +160,19 @@ class Contact(models.Model):
 
     def __str__(self):
         return str(self.contact_id)
+
+
+class HouseImage(models.Model):
+    house = models.ForeignKey(House, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='house_images/', max_length=100)
+    
+    class Meta:
+        verbose_name_plural = 'House Images'
+
+class ApartmentImage(models.Model):
+    apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='apartment_images/', max_length=100)
+    
+    class Meta:
+        verbose_name_plural = 'Apartment Images'
+
