@@ -1,4 +1,153 @@
-{%extends 'base.html' %}
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="w3-container" style="margin-top:1%; margin-left: 10%; margin-right: 10%; margin-bottom: 1%;">
+    <h2 style="margin-left:10px; ">Leírás</h2>
+    <div class="row w3-about-container">
+        <div class="col-md-6 col-sm-12">
+            <!-- Main image -->
+            <img src="{{val.img.url}}" width="100%" height="365px;">
+            
+            <!-- Additional images gallery -->
+            <div class="row" style="margin-top: 10px;">
+                {% for image in val.images.all %}
+                <div class="col-md-3 col-sm-4" style="margin-top: 10px;">
+                    <img src="{{image.image.url}}" 
+                         style="width: 100%; height: 150px; object-fit: cover;"
+                         class="img-thumbnail">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 about-text-container">
+            <h3 class="card-title">
+                <span>
+                    <b>
+                        <h3>{{val.cost}} Ft</h3>
+                    </b>
+                </span>
+            </h3>
+            {% if type == 'Apartment' %}
+            <p>{{val.dimention}} m<sup>2</sup> Ingatlan</p>
+            {% else %}
+            <p>{{val.area}} m<sup>2</sup> Ingatlan</p>
+            {% endif %}
+            <p class="card-text">{{val.desc}}</p>
+            <p>{{val.location}}, {{val.city}}, {{val.state}}</p>
+            <hr>
+            <h5 class="card-title">
+                <span>
+                    <p>
+                        <b>
+                            <h3>Feltöltve:</h3> 
+                        </b>
+                    </p>
+                </span>
+            </h5>
+            <p>{{user.name}}</p>
+            <p>{{user.location}}, {{user.city}}, {{user.state}}</p>
+            <p style="float: right;"><b>{{val.date}}</b></p>
+            {% if type == 'Apartment' %}
+            <p><b>Hirdetés azonosítója<u>{{val.room_id}}</u></b></p>
+            {% else %}
+            <p><b>Hirdetés azonosítója<u>{{val.house_id}}</u></b></p>
+            {% endif %}
+            <p style="float: right;"><a href="/contact">Észrevétel esetén</a></p>
+        </div>
+    </div>
+    <hr>
+    <div class="row w3-about-container">
+        <div class="col-md-6 col-sm-12 about-text-container">
+            <h3 class="card-title"><b>Részletek </b></h3>
+            <br>
+            <table style="width: 90%; margin-right: 5%;">
+                <tr>
+                    <td style="width: 25%; height: 40px;">
+                        Ingatlan típusa:
+                    </td>
+                    <td style="width: 30%; height: 40px;">
+                        {{type}}
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        Ára:
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        {{val.cost}} Ft
+                    </td>
+                </tr>
+                {% if type == 'House' %}
+                <tr>
+                    <td style="width: 25%; height: 40px;">
+                        Alapterület:
+                    </td>
+                    <td style="width: 30%; height: 40px;">
+                        {{val.area}} m<sup>2</sup>.
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        Emeletek száma:
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        {{val.floor}}
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td style="width: 25%; height: 40px;">
+                        Hálószobák:
+                    </td>
+                    <td style="width: 30%; height: 40px;">
+                        {{val.bedrooms}}
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        Konyhák:
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        {{val.kitchen}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%; height: 40px;">
+                        Folyosók:
+                    </td>
+                    <td style="width: 30%; height: 40px;">
+                        {{val.hall}}
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        Erkély:
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        {{val.balcany}}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%; height: 40px;">
+                        Klíma:
+                    </td>
+                    <td style="width: 30%; height: 40px;">
+                        {{val.AC}}
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        Feladva:
+                    </td>
+                    <td style="width: 25%; height: 40px;">
+                        {{val.date}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <h3 class="card-title"><b>Feltöltötte: </b></h3>
+            <p>{{user.name}}</p>
+            <p>{{user.location}}, {{user.city}}, {{user.state}}</p>
+            <p>{{user.email}}</p>
+            <p>Telefonszám: {{user.number}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- {%extends 'base.html' %}
 {%load static%}
 {%block body%}
 <div class="w3-container" style="margin-top:1%; margin-left: 10%; margin-right: 10%; margin-bottom: 1%;">
@@ -132,4 +281,4 @@
     </div>
 </div>
 </div>
-{% endblock %}
+{% endblock %} -->
